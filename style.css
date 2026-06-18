@@ -1,0 +1,230 @@
+/* Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f3f9; /* Lilás bem clarinho de fundo */
+    color: #2d3748;
+    scroll-behavior: smooth;
+}
+
+/* Cores do Projeto:
+   - Verde: #2e7d32
+   - Lilás: #8e24aa
+   - Rosa: #e91e63
+*/
+
+/* Cabeçalho */
+header {
+    background-color: #8e24aa; /* Lilás */
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .logo span {
+    color: #a3e635; /* Verde limão para destacar na logo */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f48fb1; /* Rosa claro no hover */
+}
+
+/* Banner Principal */
+.banner {
+    background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(142, 36, 170, 0.85)), 
+                url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.banner h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.banner p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Botões */
+.btn-principal {
+    background-color: #e91e63; /* Rosa */
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background 0.3s;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-principal:hover {
+    background-color: #c2185b;
+}
+
+/* Seção de Conteúdo */
+.container {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+h2 {
+    color: #2e7d32; /* Verde */
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    max-width: 350px;
+    text-align: left;
+    border-bottom: 4px solid #8e24aa; /* Detalhe lilás */
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card h3 {
+    color: #2e7d32;
+    padding: 20px 20px 10px 20px;
+}
+
+.card p {
+    padding: 0 20px 20px 20px;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.btn-card {
+    background: none;
+    border: 2px solid #e91e63; /* Borda Rosa */
+    color: #e91e63;
+    padding: 8px 15px;
+    margin: 0 20px 20px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-card:hover {
+    background-color: #e91e63;
+    color: white;
+}
+
+/* Estilo do Quiz */
+.quiz-container {
+    background-color: #f3e5f5; /* Fundo lilás suave */
+    padding: 60px 5%;
+    text-align: center;
+}
+
+#quiz-box, #resultado-box {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+#pergunta {
+    margin-bottom: 20px;
+    color: #2e7d32;
+}
+
+.opcoes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.btn-opcao {
+    background-color: #f7f3f9;
+    border: 2px solid #8e24aa; /* Borda Lilás */
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    transition: 0.2s;
+}
+
+.btn-opcao:hover {
+    background-color: #f3e5f5;
+}
+
+/* Classes JavaScript para respostas */
+.correta {
+    background-color: #c8e6c9 !important; /* Verde claro */
+    border-color: #2e7d32 !important;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.errada {
+    background-color: #ffcdd2 !important; /* Rosa/Vermelho claro */
+    border-color: #e91e63 !important;
+    color: #e91e63;
+}
+
+.btn-quiz {
+    background-color: #e91e63; /* Rosa */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Rodapé */
+footer {
+    background-color: #2e7d32; /* Verde escuro */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
