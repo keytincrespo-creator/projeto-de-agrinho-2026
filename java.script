@@ -1,0 +1,113 @@
+// Banco de dados de perguntas do Quiz sobre Agrosustentabilidade
+const perguntas = [
+    {
+        pergunta: "Qual o principal objetivo da agroecologia e agricultura sustentável?",
+        alternativas: [
+            "Produzir o máximo possível sem ligar para o solo.",
+            "Produzir alimentos preservando o meio ambiente e os recursos naturais.",
+            "Substituir toda a floresta por plantações de soja.",
+            "Utilizar o máximo de agrotóxicos permitidos."
+        ],
+        correta: 1 // Segunda alternativa (index 1)
+    },
+    {
+        pergunta: "Como a rotação de culturas ajuda o solo?",
+        alternativas: [
+            "Ela deixa o solo descansar sem nenhuma planta.",
+            "Ela quebra o ciclo de pragas e repõe nutrientes naturalmente.",
+            "Ela serve apenas para gastar menos água.",
+            "Não ajuda em nada, é apenas uma estética visual."
+        ],
+        correta: 1
+    },
+    {
+        pergunta: "Qual método de irrigação é mais sustentável para economizar água?",
+        alternativas: [
+            "Irrigação por gotejamento",
+            "Alagamento total do terreno",
+            "Uso de mangueiras abertas o dia todo",
+            "Esperar apenas pela água da chuva sem planejamento"
+        ],
+        correta: 0
+    }
+];
+
+let indicePerguntaAtual = 0;
+let pontuacao = 0;
+
+const elementoPergunta = document.getElementById("pergunta");
+const elementoAlternativas = document.getElementById("alternativas");
+const btnProximo = document.getElementById("btn-proximo");
+const boxQuiz = document.getElementById("quiz-box");
+const boxResultado = document.getElementById("resultado-box");
+const feedbackFinal = document.getElementById("feedback-final");
+
+function iniciarQuiz() {
+    indicePerguntaAtual = 0;
+    pontuacao = 0;
+    boxResultado.style.display = "none";
+    boxQuiz.style.display = "block";
+    mostrarPergunta();
+}
+
+function mostrarPergunta() {
+    redefinirEstado();
+    let perguntaAtual = perguntas[indicePerguntaAtual];
+    elementoPergunta.innerText = perguntaAtual.pergunta;
+
+    perguntaAtual.alternativas.forEach((alternativa, index) => {
+        const botao = document.createElement("button");
+        botao.innerText = alternativa;
+        botao.classList.add("btn-opcao");
+        botao.addEventListener("click", () => selecionarResposta(index, botao));
+        elementoAlternativas.appendChild(botao);
+    });
+}
+
+function redefinirEstado() {
+    btnProximo.style.display = "none";
+    while (elementoAlternativas.firstChild) {
+        elementoAlternativas.removeChild(elementoAlternativas.firstChild);
+    }
+}
+
+function selecionarResposta(indexSelecionado, botaoClicado) {
+    let corretaIndex = perguntas[indicePerguntaAtual].correta;
+    const todosBotoes = elementoAlternativas.querySelectorAll(".btn-opcao");
+
+    // Desativa todos os botões para o usuário não clicar de novo
+    todosBotoes.forEach(b => b.disabled = true);
+
+    if (indexSelecionado === corretaIndex) {
+        botaoClicado.classList.add("correta");
+        pontuacao++;
+    } else {
+        botaoClicado.classList.add("errada");
+        // Mostra qual era a correta
+        todosBotoes[corretaIndex].classList.add("correta");
+    }
+
+    btnProximo.style.display = "block";
+}
+
+btnProximo.addEventListener("click", () => {
+    indicePerguntaAtual++;
+    if (indicePerguntaAtual < perguntas.length) {
+        mostrarPergunta();
+    } else {
+        mostrarResultados();
+    }
+});
+
+function mostrarResultados() {
+    boxQuiz.style.display = "none";
+    boxResultado.style.display = "block";
+    feedbackFinal.innerText = `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+}
+
+function reiniciarQuiz() {
+    iniciarQuiz();
+}
+
+// Inicia o quiz automaticamente ao carregar a página
+iniciarQuiz();
